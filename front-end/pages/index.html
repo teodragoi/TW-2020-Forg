@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,27 @@
     <link rel="stylesheet" type="text/css" href="../styles/general.css">
     <title>GarT</title>
 </head>
+
 <body>
-    <div class="search-area">
-        <form class="search-form" action="">
-            <label for="searchCourse">Bring the world home</label>
-            <input type="text" id="searchCourse" name="searchCourse" placeholder="What do you want to learn?">
-        </form>
+    <div class="main-area">
+        <div class="search-area">
+            <form class="search-form" action="">
+                <label for="searchCourse">Bring the world home</label>
+                <input type="text" id="searchCourse" name="searchCourse" placeholder="What do you want to learn?">
+            </form>
+        </div>
+        <div class="tabs-container"></div>
+        <div class="course-list-container"></div>
+        <div class="paginator-container">
+            <i class="fas fa-2x fa-angle-left arrow-icon" onclick="scrollLeft()"></i>
+            <span class="paginator-text"> Scroll through courses </span>
+            <i class="fas fa-2x fa-angle-right arrow-icon" onclick="scrollRight()"></i>
+        </div>
     </div>
-    <div class="tabs-container"></div>
+
 
     <script src="../scripts/index.js"></script>
+    <script src="https://kit.fontawesome.com/da5407d7e3.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
