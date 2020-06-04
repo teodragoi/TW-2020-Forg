@@ -20,13 +20,15 @@
         <div class="tabs-container"></div>
         <div class="course-list-container"></div>
         <div class="paginator-container">
-            <i class="fas fa-2x fa-angle-left arrow-icon" onclick="scrollLeft()"></i>
+            <i class="fas fa-2x fa-angle-left arrow-icon" onclick="scrollCourse(-1)"></i>
             <span class="paginator-text"> Scroll through courses </span>
-            <i class="fas fa-2x fa-angle-right arrow-icon" onclick="scrollRight()"></i>
+            <i class="fas fa-2x fa-angle-right arrow-icon" onclick="scrollCourse(1)"></i>
         </div>
     </div>
 
-
+    <script src="../models/course-list-item.model.js"></script>
+    <script src="../scripts/course-list.js"></script>
+    <script src="../scripts/tabs.js"></script>
     <script src="../scripts/index.js"></script>
     <script src="https://kit.fontawesome.com/da5407d7e3.js" crossorigin="anonymous"></script>
 </body>
