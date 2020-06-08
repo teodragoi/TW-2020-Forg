@@ -37,7 +37,7 @@ function resetValidationMessages() {
 }
 
 function addNewUser(userModel) {
-    const res = fetch(usersUrl, {
+    fetch(usersUrl, {
         method: 'POST',
         body: JSON.stringify(userModel)
     })
