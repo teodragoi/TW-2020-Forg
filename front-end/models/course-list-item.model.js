@@ -1,13 +1,13 @@
 class CourseListItem {
     id;
     image;
-    description;
+    title;
     author;
 
-    constructor(id, image, description, author) {
+    constructor(id, image, title, author) {
         this.id = id;
         this.image = image;
-        this.description = description;
+        this.title = title;
         this.author = author;
     }
 }
