@@ -1,15 +1,15 @@
 class CourseDetailsModel {
     id;
-    photo;
+    image;
     rating;
     materials;
     tasks;
     title;
     author;
 
-    constructor(id, photo, rating, materials, tasks, title, author) {
+    constructor(id, image, rating, materials, tasks, title, author) {
         this.id = id;
-        this.photo = photo;
+        this.image = image;
         this.rating = rating;
         this.materials = materials;
         this.tasks = tasks;
