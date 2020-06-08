@@ -9,6 +9,12 @@ body {
     margin-top: 64px;
 }
 
-input {
+.input-container {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 16px;
+}
+
+.validation-message {
+    color: red;
 }
