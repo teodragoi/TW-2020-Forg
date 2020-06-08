@@ -34,7 +34,7 @@ function updateCourseListContainer() {
             <img src="../assets/course_cover.jpg" alt="">
             <span class="course-description">${courseList[i].description}</span>
             <span class="course-author">${courseList[i].author}</span>
-            <button class="read-button" data-course-number="${courseList[i].id}">Read this course</button>
+            <button class="read-button" data-course-number="${courseList[i].id}" onclick="selectCourse(${courseList[i].id})">Read this course</button>
         </div>
     `)
     }
@@ -51,7 +51,6 @@ function scrollCourse(direction) {
 function scrollLeft() {
     if (pageNumber > 0) {
         pageNumber = pageNumber - 1;
-        console.log(pageNumber);
         updateCourseListContainer();
     }
 }
@@ -59,7 +58,10 @@ function scrollLeft() {
 function scrollRight() {
     if (pageNumber + 1 < numberOfCourses / pageSize) {
         pageNumber = pageNumber + 1;
-        console.log(pageNumber);
         updateCourseListContainer();
     }
+}
+
+function selectCourse(i) {
+    window.location.href = `../pages/course-details.html?courseId=${i}`;
 }
