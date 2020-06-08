@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const UpsertCourseModel = require('../models/course.model');
+const UserModel = require('../models/user.model');
 
 const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false";
 
@@ -52,4 +53,34 @@ exports.closeConnection = () => {
 
 exports.databaseList = async () => {
     return await listDatabases(client);
+}
+
+exports.createUser = async (body) => {
+    const newUser = new UserModel(
+        body.username,
+        body.password,
+        body.admin,
+        body.coursesCompleted
+    );
+
+    const users = await client.db('GarT').collection('Users').find().toArray();
+
+    const user = users.find(user => user.username === newUser.username);
+
+    let result;
+
+    if (user) {
+        result = 'User already exists';
+    } else {
+        result = await client.db('GarT').collection('Users').insertOne(newUser);
+    }
+
+    return result;
+}
+
+exports.getUserByUsername = async (username) => {
+
+    const users = await client.db('GarT').collection('Users').find().toArray();
+
+    return users.find(user => `"${user.username}"` === username);
 }

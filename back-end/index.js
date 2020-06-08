@@ -39,6 +39,16 @@ http.createServer(async (req, res) => {
                     res.writeHead(404, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ 'err': 'Not found' }));
                 }
+            } else if (req.url.includes('/Users') && queryParams.username) {
+                const user = await database.getUserByUsername(queryParams.username);
+
+                if (user) {
+                    res.writeHead(200, headers);
+                    res.end(JSON.stringify(user));
+                } else {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ 'err': 'Username is not registered' }));
+                }
             }
             else {
                 res.writeHead(400, { 'Content-Type': 'appplication/json' });
@@ -55,6 +65,19 @@ http.createServer(async (req, res) => {
                         res.writeHead(201, headers);
                         res.end(JSON.stringify({ 'CourseId': addResult.insertedId }));
                     } else {
+                        res.writeHead(500, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ 'Error': 'An error occured' }));
+                    }
+                } else if (req.url === '/Users') {
+                    const addResult = await database.createUser(body);
+                    if (addResult.insertedId) {
+                        res.writeHead(201, headers);
+                        res.end(JSON.stringify({ 'userId': addResult.insertedId }));
+                    } else if (addResult === 'User already exists') {
+                        res.writeHead(400, headers);
+                        res.end(JSON.stringify({ 'error': addResult }));
+                    }
+                    else {
                         res.writeHead(500, { 'Content-Type': 'application/json' });
                         res.end(JSON.stringify({ 'Error': 'An error occured' }));
                     }
