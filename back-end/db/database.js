@@ -6,14 +6,6 @@ const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%2
 
 const client = new MongoClient(uri);
 
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
-
-    const list = databasesList.databases.map(db => db.name);
-
-    return databasesList.databases.map(db => db.name);
-};
-
 exports.createCourse = async (body) => {
     const newCourse = new UpsertCourseModel(
         body.image,
@@ -39,6 +31,16 @@ exports.getCourseById = async (id) => {
     return courses.find(course => course._id.toString() === id);
 }
 
+exports.searchCourse = async (searchString) => {
+    const courses = await client.db('GarT').collection('Courses').find().toArray();
+    searchString = searchString.substring(1);
+    searchString = searchString.substring(0, searchString.length - 1);
+
+    return courses.filter(course => {
+        return course.title.includes(searchString) || course.author.includes(searchString)
+    });
+}
+
 exports.createConnection = async () => {
     try {
         await client.connect();
@@ -49,10 +51,6 @@ exports.createConnection = async () => {
 
 exports.closeConnection = () => {
     client.close();
-}
-
-exports.databaseList = async () => {
-    return await listDatabases(client);
 }
 
 exports.createUser = async (body) => {

@@ -39,6 +39,16 @@ http.createServer(async (req, res) => {
                     res.writeHead(404, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ 'err': 'Not found' }));
                 }
+            } else if (req.url.includes('/Courses') && queryParams.searchString) {
+                const courses = await database.searchCourse(queryParams.searchString);
+
+                if (courses.length > 0) {
+                    res.writeHead(200, headers);
+                    res.end(JSON.stringify(courses));
+                } else {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ 'err': 'Not found' }));
+                }
             } else if (req.url.includes('/Users') && queryParams.username) {
                 const user = await database.getUserByUsername(queryParams.username);
 
