@@ -28,6 +28,16 @@ exports.createCourse = async (body) => {
     return result;
 }
 
+exports.getCourses = async () => {
+    return await client.db('GarT').collection('Courses').find().toArray();
+}
+
+exports.getCourseById = async (id) => {
+    const courses = await client.db('GarT').collection('Courses').find().toArray();
+
+    return courses.find(course => course._id.toString() === id);
+}
+
 exports.createConnection = async () => {
     try {
         await client.connect();
