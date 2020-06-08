@@ -7,6 +7,14 @@ const database = require('./db/database');
 
 http.createServer(async (req, res) => {
 
+    const headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+        "Access-Control-Max-Age": 2592000,
+        "Content-Type": "application/json"
+
+    }
+
     switch (req.method) {
         case 'GET':
             const parsed = url.parse(req.url);
@@ -14,9 +22,10 @@ http.createServer(async (req, res) => {
             await database.createConnection();
             if (req.url === '/Courses') {
                 const courses = await database.getCourses();
+                console.log
 
                 if (courses) {
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.writeHead(200, headers);
                     res.end(JSON.stringify(courses));
                     database.closeConnection();
                 } else {
@@ -28,7 +37,7 @@ http.createServer(async (req, res) => {
                 const course = await database.getCourseById(queryParams.courseId);
 
                 if (course) {
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.writeHead(200, headers);
                     res.end(JSON.stringify(course));
                     database.closeConnection();
                 } else {
@@ -51,7 +60,7 @@ http.createServer(async (req, res) => {
                 if (req.url === '/Courses') {
                     const addResult = await database.createCourse(body);
                     if (addResult.insertedId) {
-                        res.writeHead(201, { 'Content-Type': 'application/json' });
+                        res.writeHead(201, headers);
                         res.end(JSON.stringify({ 'CourseId': addResult.insertedId }));
                         database.closeConnection();
                     } else {
