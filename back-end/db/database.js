@@ -96,5 +96,5 @@ exports.getUserByUsername = async (username) => {
 
     const users = await client.db('GarT').collection('Users').find().toArray();
 
-    return users.find(user => `"${user.username}"` === username);
+    return users.find(user => user.username === username);
 }

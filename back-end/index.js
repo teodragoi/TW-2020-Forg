@@ -46,7 +46,17 @@ http.createServer(async (req, res) => {
                     res.writeHead(200, headers);
                     res.end(JSON.stringify(courses));
                 } else {
-                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.writeHead(404, headers);
+                    res.end(JSON.stringify({ 'err': 'Not found' }));
+                }
+            } else if (req.url.includes('/Users') && queryParams.username) {
+                const user = await database.getUserByUsername(queryParams.username);
+
+                if (user) {
+                    res.writeHead(200, headers);
+                    res.end(JSON.stringify(user));
+                } else {
+                    res.writeHead(404, headers);
                     res.end(JSON.stringify({ 'err': 'Not found' }));
                 }
             }
