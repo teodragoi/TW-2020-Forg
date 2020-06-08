@@ -88,7 +88,7 @@ http.createServer(async (req, res) => {
                         res.writeHead(200, headers);
                         res.end(JSON.stringify(user));
                     } else {
-                        res.writeHead(404, { 'Content-Type': 'application/json' });
+                        res.writeHead(404, headers);
                         res.end(JSON.stringify(user));
                     }
                 }
