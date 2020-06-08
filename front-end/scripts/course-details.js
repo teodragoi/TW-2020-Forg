@@ -1,8 +1,8 @@
-let courseId = -1;
 let courseDetails;
 let tasksChecked = 0;
 let completeButtonDisabled = false;
 const noOfTasks = 3;
+const coursesUrl = 'http://127.0.0.1:8125/Courses';
 
 window.addEventListener('onload', initializeCourse());
 
@@ -10,22 +10,41 @@ function getId() {
     const splitUrl = window.location.href.split('/');
     const fullParam = splitUrl[splitUrl.length - 1];
     const splitParam = fullParam.split('=');
-    courseId = splitParam[splitParam.length - 1];
-    return courseId;
+    return splitParam[splitParam.length - 1];
 }
 
 function initializeCourse() {
-    courseDetails = new CourseDetailsModel(
-        getId(),
-        '../assets/course_cover.jpg',
-        3,
-        courseDummyDetails.materials,
-        courseDummyDetails.tasks,
-        courseDummyDetails.title,
-        courseDummyDetails.author
-    );
-    generateMaterialElements();
-    generateTaskElements();
+    getCourseById(getId());
+    // courseDetails = new CourseDetailsModel(
+    //     getId(),
+    //     '../assets/course_cover.jpg',
+    //     3,
+    //     courseDummyDetails.materials,
+    //     courseDummyDetails.tasks,
+    //     courseDummyDetails.title,
+    //     courseDummyDetails.author
+    // );
+    // generateMaterialElements();
+    // generateTaskElements();
+}
+
+function getCourseById(courseId) {
+    fetch(`${coursesUrl}/?courseId=${courseId}`)
+        .then(res => res.json())
+        .then(course => {
+            courseDetails = new CourseDetailsModel(
+                course._id,
+                course.image,
+                course.rating,
+                course.materials,
+                course.tasks,
+                course.title,
+                course.author
+            );
+            generateMaterialElements();
+            generateTaskElements();
+        })
+        .catch(err => console.log(err));
 }
 
 function generateMaterialElements() {

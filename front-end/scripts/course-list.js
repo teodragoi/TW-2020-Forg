@@ -22,7 +22,7 @@ function setUpCourseListContainer() {
                     <img src="../assets/course_cover.jpg" alt="">
                     <span class="course-description">${courseList[i].description}</span>
                     <span class="course-author">${courseList[i].author}</span>
-                    <button class="read-button" data-course-number="${courseList[i].id}">Read this course</button>
+                    <button class="read-button" onclick="selectCourse('${courseList[i].id}')">Read this course</button>
                 </div>
             `)
         }
@@ -39,7 +39,7 @@ function updateCourseListContainer() {
                 <img src="../assets/course_cover.jpg" alt="">
                 <span class="course-description">${courseList[i].description}</span>
                 <span class="course-author">${courseList[i].author}</span>
-                <button class="read-button" data-course-number="${courseList[i].id}" onclick="selectCourse(${courseList[i].id})">Read this course</button>
+                <button class="read-button" onclick="selectCourse('${courseList[i].id}')">Read this course</button>
             </div>
             `)
         }
