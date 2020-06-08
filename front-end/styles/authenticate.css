@@ -2,7 +2,7 @@ body {
     height: 75vh;
 }
 
-.register-form {
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
