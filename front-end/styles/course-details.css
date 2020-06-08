@@ -36,6 +36,7 @@ label {
 }
 
 button {
+    cursor: pointer;
     color: white;
     background-color: rgb(103, 21, 110);
     height: 48px;

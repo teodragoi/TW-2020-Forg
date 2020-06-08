@@ -1,10 +1,13 @@
 let courseDetails;
 let tasksChecked = 0;
 let completeButtonDisabled = false;
+let userModel;
 const noOfTasks = 3;
 const coursesUrl = 'http://127.0.0.1:8125/Courses';
+const userUrl = 'http://127.0.0.1:8125/Users';
 
 window.addEventListener('onload', initializeCourse());
+window.addEventListener('onload', setUser());
 
 function getId() {
     const splitUrl = window.location.href.split('/');
@@ -82,4 +85,29 @@ function checkTasksDone(checkId) {
     } else {
         document.getElementById('complete-button').disabled = true;
     }
+}
+
+function setUser() {
+    const username = localStorage.getItem('username');
+
+    const url = `${userUrl}/?username=${username}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(user => {
+            userModel = new UserModel(user.username, user.password, user.admin, user.coursesCompleted);
+            console.log(userModel);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+function completeCourse() {
+    if (userModel.coursesCompleted === null) {
+        userModel.coursesCompleted = 1;
+    } else {
+        userModel.coursesCompleted = userModel.coursesCompleted + 1;
+    }
+    window.location.href = '../pages/index.html';
 }
