@@ -76,6 +76,22 @@ exports.createUser = async (body) => {
     return result;
 }
 
+exports.login = async (body) => {
+    const users = await client.db('GarT').collection('Users').find().toArray();
+    
+    const user = users.find(user => user.username === body.username);
+
+    if (user.password === body.password) {
+        result = user.username;
+    } else if (user.password !== body.password) {
+        result = {pswError: 'Password is incorrect'};
+    } else {
+        result = {usrError: 'Username is incorrect'};
+    }
+
+    return result;
+}
+
 exports.getUserByUsername = async (username) => {
 
     const users = await client.db('GarT').collection('Users').find().toArray();

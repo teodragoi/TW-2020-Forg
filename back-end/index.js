@@ -49,16 +49,6 @@ http.createServer(async (req, res) => {
                     res.writeHead(404, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ 'err': 'Not found' }));
                 }
-            } else if (req.url.includes('/Users') && queryParams.username) {
-                const user = await database.getUserByUsername(queryParams.username);
-
-                if (user) {
-                    res.writeHead(200, headers);
-                    res.end(JSON.stringify(user));
-                } else {
-                    res.writeHead(404, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ 'err': 'Username is not registered' }));
-                }
             }
             else {
                 res.writeHead(400, { 'Content-Type': 'appplication/json' });
@@ -90,6 +80,16 @@ http.createServer(async (req, res) => {
                     else {
                         res.writeHead(500, { 'Content-Type': 'application/json' });
                         res.end(JSON.stringify({ 'Error': 'An error occured' }));
+                    }
+                } else if (req.url === '/Users/login') {
+                    const user = await database.login(body);
+
+                    if (user.pswError === undefined && user.usrError === undefined) {
+                        res.writeHead(200, headers);
+                        res.end(JSON.stringify(user));
+                    } else {
+                        res.writeHead(404, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify(user));
                     }
                 }
             });
