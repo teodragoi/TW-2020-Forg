@@ -1,0 +1,14 @@
+body {
+    height: 75vh;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+input {
+    margin-bottom: 16px;
+}
