@@ -18,17 +18,6 @@ function getId() {
 
 function initializeCourse() {
     getCourseById(getId());
-    // courseDetails = new CourseDetailsModel(
-    //     getId(),
-    //     '../assets/course_cover.jpg',
-    //     3,
-    //     courseDummyDetails.materials,
-    //     courseDummyDetails.tasks,
-    //     courseDummyDetails.title,
-    //     courseDummyDetails.author
-    // );
-    // generateMaterialElements();
-    // generateTaskElements();
 }
 
 function getCourseById(courseId) {
@@ -109,5 +98,14 @@ function completeCourse() {
     } else {
         userModel.coursesCompleted = userModel.coursesCompleted + 1;
     }
-    window.location.href = '../pages/index.html';
+
+    fetch(`${userUrl}/Update`, {
+        method: 'POST',
+        body: JSON.stringify({ username: userModel.username, coursesCompleted: userModel.coursesCompleted })
+    })
+        .then(res => res.json())
+        .then(data => console.log('User completed course'))
+        .catch (err => console.log(err));
+        
+        window.location.href = '../pages/index.html';
 }
