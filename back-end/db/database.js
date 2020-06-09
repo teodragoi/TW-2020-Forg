@@ -106,3 +106,13 @@ exports.getUserByUsername = async(username) => {
 
     return users.find(user => user.username === username);
 }
+
+exports.getUserRanking = async (username) => {
+    let users = await client.db('GarT').collection('Users').find().sort({ coursesCompleted: -1 }).toArray();
+
+    for (i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            return i + 1;
+        }
+    }
+}

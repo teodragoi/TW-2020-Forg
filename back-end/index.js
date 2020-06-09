@@ -60,6 +60,16 @@ http.createServer(async (req, res) => {
                     res.writeHead(404, headers);
                     res.end(JSON.stringify({ 'err': 'Not found' }));
                 }
+            } else if (req.url.includes('/Users') && queryParams.userRanking) {
+                const userRanking = await database.getUserRanking(queryParams.userRanking);
+
+                if (userRanking) {
+                    res.writeHead(200, headers);
+                    res.end(JSON.stringify({ ranking: userRanking }));
+                } else {
+                    res.writeHead(404, headers);
+                    res.end(JSON.stringify({ 'err': 'Not found' }));
+                }
             }
             else {
                 res.writeHead(400, { 'Content-Type': 'appplication/json' });
