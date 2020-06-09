@@ -50,7 +50,7 @@ function loadProfileModal() {
             <div class="profile-content">
                 <i class="far fa-user-circle fa-5x"></i>
                 <p> Name: ${userModel.username} </p>
-                <p> Courses Completed: ${userModel.coursesCompleted} </p>
+                <p> Courses Completed: ${userModel.coursesCompleted === null ? 0 : userModel.coursesCompleted} </p>
                 <p> Ranking: ${localStorage.getItem('ranking')} </p>
             </div>
         </div>
