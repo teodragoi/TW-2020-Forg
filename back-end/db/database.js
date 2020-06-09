@@ -6,7 +6,7 @@ const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%2
 
 const client = new MongoClient(uri);
 
-exports.createCourse = async (body) => {
+exports.createCourse = async(body) => {
     const newCourse = new UpsertCourseModel(
         body.image,
         body.title,
@@ -21,17 +21,17 @@ exports.createCourse = async (body) => {
     return result;
 }
 
-exports.getCourses = async () => {
+exports.getCourses = async() => {
     return await client.db('GarT').collection('Courses').find().toArray();
 }
 
-exports.getCourseById = async (id) => {
+exports.getCourseById = async(id) => {
     const courses = await client.db('GarT').collection('Courses').find().toArray();
 
     return courses.find(course => course._id.toString() === id);
 }
 
-exports.searchCourse = async (searchString) => {
+exports.searchCourse = async(searchString) => {
     const courses = await client.db('GarT').collection('Courses').find().toArray();
     searchString = searchString.substring(1);
     searchString = searchString.substring(0, searchString.length - 1);
@@ -41,7 +41,7 @@ exports.searchCourse = async (searchString) => {
     });
 }
 
-exports.createConnection = async () => {
+exports.createConnection = async() => {
     try {
         await client.connect();
     } catch (e) {
@@ -53,7 +53,7 @@ exports.closeConnection = () => {
     client.close();
 }
 
-exports.createUser = async (body) => {
+exports.createUser = async(body) => {
     const newUser = new UserModel(
         body.username,
         body.password,
@@ -76,23 +76,23 @@ exports.createUser = async (body) => {
     return result;
 }
 
-exports.login = async (body) => {
+exports.login = async(body) => {
     const users = await client.db('GarT').collection('Users').find().toArray();
-    
+
     const user = users.find(user => user.username === body.username);
 
     if (user.password === body.password) {
         result = user.username;
     } else if (user.password !== body.password) {
-        result = {pswError: 'Password is incorrect'};
+        result = { pswError: 'Password is incorrect' };
     } else {
-        result = {usrError: 'Username is incorrect'};
+        result = { usrError: 'Username is incorrect' };
     }
 
     return result;
 }
 
-exports.getUserByUsername = async (username) => {
+exports.getUserByUsername = async(username) => {
 
     const users = await client.db('GarT').collection('Users').find().toArray();
 

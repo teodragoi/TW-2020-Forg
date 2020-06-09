@@ -1,9 +1,25 @@
+.background {
+    background-image: url('../assets/gettyimages-155914049-640x640.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
 h1 {
     font-weight: 300;
     font-size: 36px;
     text-align: center;
     justify-content: center;
     margin-top: 64px;
+    background-image: url('../assets/Cartoon\ Bark\ 1.jpg');
+    /* background-size: cover; */
+    border-radius: 25px;
+    padding-bottom: 25px;
+    text-size-adjust: 20px;
+    opacity: 1;
 }
 
 .content {
@@ -11,20 +27,27 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 64px;
+    opacity: 1;
 }
 
 .list-title {
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 24px;
+    font-family: "Lucida Console", Courier, monospace;
+    opacity: 1;
 }
 
 .list-item {
     margin-bottom: 24px;
+    margin-top: 24px;
+    font-family: "Lucida Console", Courier, monospace;
+    opacity: 1;
 }
 
 ul.task-list {
     list-style-type: none;
     cursor: pointer;
+    text-size-adjust: 200px;
 }
 
 input {
