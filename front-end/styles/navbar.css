@@ -1,0 +1,24 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    margin-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 250, 250);
+}
+
+.navbar-elements-container {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    font-size: 18px;
+    color: rgb(255, 250, 250);
+}
+
+.navbar-element {
+    cursor: pointer;
+}

@@ -92,6 +92,14 @@ exports.login = async(body) => {
     return result;
 }
 
+exports.updateCoursesCompleted = async(body) => {
+    const query = { username: body.username };
+    const newValue = { $set: { coursesCompleted: body.coursesCompleted } };
+    const result = await client.db('GarT').collection('Users').updateOne(query, newValue);
+
+    return result;
+}
+
 exports.getUserByUsername = async(username) => {
 
     const users = await client.db('GarT').collection('Users').find().toArray();

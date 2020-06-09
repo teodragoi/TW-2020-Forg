@@ -10,11 +10,12 @@ http.createServer(async (req, res) => {
 
     const headers = {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+        "Access-Control-Allow-Methods": "PUT, POST, GET, OPTIONS",
         "Access-Control-Max-Age": 2592000,
         "Content-Type": "application/json"
 
     }
+    let body = '';
 
     switch (req.method) {
         case 'GET':
@@ -66,7 +67,7 @@ http.createServer(async (req, res) => {
             }
             break;
         case 'POST':
-            let body = '';
+            body = '';
             req.on('data', async chunk => {
                 body = JSON.parse(chunk.toString());
                 if (req.url === '/Courses') {
@@ -101,8 +102,18 @@ http.createServer(async (req, res) => {
                         res.writeHead(404, headers);
                         res.end(JSON.stringify(user));
                     }
+                } else if (req.url === '/Users/Update') {
+                    const updateResult = await database.updateCoursesCompleted(body);
+                    if (updateResult.result.ok === 1) {
+                        res.writeHead(204, headers);
+                        res.end();
+                    } else {
+                        res.writeHead(500, headers);
+                        res.end(JSON.stringify({ 'Error': 'An error occured' }));
+                    }
                 }
             });
+            break;
     }
 }).listen(8125);
 console.log('Server running at http://127.0.0.1:8125/');

@@ -1,10 +1,8 @@
 let courseDetails;
 let tasksChecked = 0;
 let completeButtonDisabled = false;
-let userModel;
 const noOfTasks = 3;
 const coursesUrl = 'http://127.0.0.1:8125/Courses';
-const userUrl = 'http://127.0.0.1:8125/Users';
 
 window.addEventListener('onload', initializeCourse());
 window.addEventListener('onload', setUser());
@@ -18,17 +16,6 @@ function getId() {
 
 function initializeCourse() {
     getCourseById(getId());
-    // courseDetails = new CourseDetailsModel(
-    //     getId(),
-    //     '../assets/course_cover.jpg',
-    //     3,
-    //     courseDummyDetails.materials,
-    //     courseDummyDetails.tasks,
-    //     courseDummyDetails.title,
-    //     courseDummyDetails.author
-    // );
-    // generateMaterialElements();
-    // generateTaskElements();
 }
 
 function getCourseById(courseId) {
@@ -87,27 +74,20 @@ function checkTasksDone(checkId) {
     }
 }
 
-function setUser() {
-    const username = localStorage.getItem('username');
-
-    const url = `${userUrl}/?username=${username}`;
-
-    fetch(url)
-        .then(res => res.json())
-        .then(user => {
-            userModel = new UserModel(user.username, user.password, user.admin, user.coursesCompleted);
-            console.log(userModel);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-}
-
 function completeCourse() {
     if (userModel.coursesCompleted === null) {
         userModel.coursesCompleted = 1;
     } else {
         userModel.coursesCompleted = userModel.coursesCompleted + 1;
     }
-    window.location.href = '../pages/index.html';
+
+    fetch(`${userUrl}/Update`, {
+        method: 'POST',
+        body: JSON.stringify({ username: userModel.username, coursesCompleted: userModel.coursesCompleted })
+    })
+        .then(res => res.json())
+        .then(data => console.log('User completed course'))
+        .catch (err => console.log(err));
+        
+        window.location.href = '../pages/index.html';
 }
