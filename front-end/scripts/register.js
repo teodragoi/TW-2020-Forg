@@ -15,7 +15,6 @@ function registerUser() {
             insertValidationMessage('psw-repeat', 'Passwords do not match');
         } else {
             const newUser = new UserModel(formData.get('username'), formData.get('password'), false, 0);
-            console.log(newUser);
             addNewUser(newUser);
         }
     }

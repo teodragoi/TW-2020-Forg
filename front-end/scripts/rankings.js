@@ -8,7 +8,6 @@ function getRankings() {
         .then(res => res.json())
         .then(ranks => {
             rankings = ranks
-            console.log(rankings);
             setRankingsContainer();
         })
         .catch(err => {
