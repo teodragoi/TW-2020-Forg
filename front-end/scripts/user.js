@@ -59,7 +59,6 @@ function loadProfileModal() {
 }
 
 function openProfileModal() {
-    console.log('In open');
     const modal = document.getElementById('profileModal');
     modal.style.display = "block";
 }

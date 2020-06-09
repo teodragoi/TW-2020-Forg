@@ -108,11 +108,29 @@ exports.getUserByUsername = async(username) => {
 }
 
 exports.getUserRanking = async (username) => {
-    let users = await client.db('GarT').collection('Users').find().sort({ coursesCompleted: -1 }).toArray();
+    const users = await client.db('GarT').collection('Users').find().sort({ coursesCompleted: -1 }).toArray();
 
     for (i = 0; i < users.length; i++) {
         if (users[i].username === username) {
             return i + 1;
         }
     }
+}
+
+exports.getRankings = async () => {
+    const users = await client.db('GarT').collection('Users').find().sort({ coursesCompleted: -1 }).toArray();
+
+    const ranks = [];
+
+    for (i = 0; i < 10; i++) {
+        if (users[i]) {
+            ranks.push({
+                username: users[i].username,
+                rank: i + 1,
+                score: users[i].coursesCompleted
+            });
+        }
+    }
+
+    return ranks;
 }
