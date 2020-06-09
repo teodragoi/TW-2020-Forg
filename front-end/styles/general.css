@@ -1,6 +1,11 @@
+@import './navbar.css';
+@import './user-profile.css';
+
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: Roboto;
     margin: 0;
 }
