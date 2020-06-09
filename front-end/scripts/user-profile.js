@@ -11,9 +11,9 @@ function loadProfileModal() {
                 <span class="close" onclick="closeModal()">&times;</span>
             </div>
             <div class="profile-content">
-                <p>Image here</p>
-                <p> Name here </p>
-                <p> Coompleted here </p>
+                <i class="far fa-user-circle fa-5x"></i>
+                <p> Name: ${userModel.username} </p>
+                <p> Courses Completed: ${userModel.coursesCompleted} </p>
                 <p> Ranking here </p>
             </div>
         </div>
