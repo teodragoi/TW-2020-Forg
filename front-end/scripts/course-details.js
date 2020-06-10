@@ -32,10 +32,18 @@ function getCourseById(courseId) {
                 course.author
             );
             noOfTasks = course.tasks.length;
+            generateCourseTitleAndAuthor();
             generateMaterialElements();
             generateTaskElements();
         })
         .catch(err => console.log(err));
+}
+
+function generateCourseTitleAndAuthor() {
+    const titleContainer = document.querySelector('.course-title');
+    titleContainer.innerHTML = courseDetails.title;
+    const authorContainer = document.querySelector('.course-author');
+    authorContainer.innerHTML = courseDetails.author;
 }
 
 function generateMaterialElements() {
