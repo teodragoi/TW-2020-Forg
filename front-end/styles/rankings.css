@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
-    width: 200px;
+    width: 300px;
 }
 
 .rank-details {
@@ -22,4 +22,18 @@
 
 i {
     margin: 0;
+}
+
+h2, .rank-number, .username, .ranking-score {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ddd70b;
+    text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
+    margin-bottom: 16px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.rank-number, .username, .ranking-score {
+    font-size: 20px;
+    margin-bottom: 0;
 }

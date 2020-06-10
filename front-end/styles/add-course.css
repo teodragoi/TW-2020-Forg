@@ -11,8 +11,45 @@
 
 i {
     margin: 0;
+    color: #ddd70b;
 }
 
 .input-container {
     margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ddd70b;
+    text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
+    margin-bottom: 16px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ddd70b;
+    text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
+    margin-bottom: 16px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+    width: 320px;
+    padding: 10px 0;
+    margin-top: 16px;
+}
+
+.button-text {
+    color: #c51c1c;
+    text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
+    font-family: 'Courier New', Courier, monospace;
 }

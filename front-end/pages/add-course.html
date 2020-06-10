@@ -15,7 +15,7 @@
         <div class="navbar-elements-container">
             <span class="navbar-element"> <a href="./index.html">HOME</a> </span>
             <span class="navbar-element"> <a href="./rankings.html">RANKINGS</a> </span>
-            <span class="navbar-element"> <a onclick="openProfileModal()"></a>PROFILE</span>
+            <span class="navbar-element"> <a onclick="openProfileModal()">PROFILE</a> </span>
         </div>
     </nav>
 
@@ -36,7 +36,7 @@
             <label for="material1">Material 1</label>
             <div id="material1" class="input-container">
                 <input type="text" placeholder="Material1" name="material1">
-                <i id="icon-add-material1" class="far fa-plus-square add-remove-icon" onclick="addMaterialField()"></i>
+                <i id="icon-add-material1" class="far fa-plus-square fa-2x add-remove-icon" onclick="addMaterialField()"></i>
             </div>
         </div>
 
@@ -44,11 +44,13 @@
             <label for="task1">Task 1</label>
             <div id="task1" class="input-container">
                 <input type="text" placeholder="Task1" name="task1">
-                <i id="icon-add-task1" class="far fa-plus-square add-remove-icon" onclick="addTaskField()"></i>
+                <i id="icon-add-task1" class="far fa-plus-square fa-2x add-remove-icon" onclick="addTaskField()"></i>
             </div>
         </div>
 
-        <button type="submit">Add Course</button>
+        <button type="submit">
+            <span class="button-text"> Add Course </span>
+        </button>
     </form>
 
     <script src="../models/user.model.js"></script>

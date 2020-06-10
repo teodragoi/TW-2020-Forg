@@ -24,7 +24,7 @@ function setRankingsContainer() {
                 <span class="rank-number">${ranking.rank}.</span>
                 <i class="far fa-user-circle fa-2x"></i>
                 <span class="username"> ${ranking.username} </span>
-            </span> ${ranking.score === null ? 0 : ranking.score}
+            </span> <span class="ranking-score"> ${ranking.score === null ? 0 : ranking.score} </span>
         </div>
         `)
     })
