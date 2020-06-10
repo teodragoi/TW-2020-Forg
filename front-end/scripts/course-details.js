@@ -69,7 +69,9 @@ function checkTasksDone(checkId) {
         tasksChecked = tasksChecked - 1;
     }
     if (tasksChecked === noOfTasks) {
-        document.getElementById('complete-button').disabled = false;
+        if (localStorage.getItem('username')) {
+            document.getElementById('complete-button').disabled = false;
+        }
     } else {
         document.getElementById('complete-button').disabled = true;
     }
@@ -88,7 +90,7 @@ function completeCourse() {
     })
         .then(res => res.json())
         .then(data => console.log('User completed course'))
-        .catch (err => console.log(err));
-        
-        window.location.href = '../pages/index.html';
+        .catch(err => console.log(err));
+
+    window.location.href = '../pages/index.html';
 }

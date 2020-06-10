@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GarT - Scholarly</title>
+    <link rel="stylesheet" href="./scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          Dragoi Teodor
+          &amp;
+          Roibu Radu
+        </dd>
+      </dl>
+    </div>
+    <section id="introduction" role="doc-introduction">
+      <!-- review? -->
+      <h2>Introduction</h2>
+      <p>
+          GarT is a web application meant to help the everyday gardner that wants to get started to learn a few useful
+          things about the trade. Using this app, you can select any course from the wide variety that is offered, in order
+          to pick just the right one for what you want to learn.
+      </p>
+      <p>
+          Of course, what fun is learning if there isn't a bit of competition involved. So in order to insert this new competitive
+          element we also present a ranking of all our users, based on the number of courses they have completed. So pick up your tools
+          and get on started with the learning. Make sure you get among the first top ten students of our online platform.
+      </p>
+    </section>
+    <section id="structure">
+      <!-- review? -->
+      <h2>Structure</h2>
+      <p>
+        In order to not mix up our functionalities we have separated the folder structure in two: front-end and back-end.
+      </p>
+      <p>
+          The front-end presents a friendly GUI, build on technologies such as: HTML5, JavaScript and CSS3 meant to present all of our functionalities as clearly as possible.
+      </p>
+      <p>
+          On the other hand, the back-end is where all the "nasty" stuff is happening. We created a NodeJS server, that uses a Mongo Database to store all data necessary
+          for the smooth running of our application. 
+      </p>
+      <section id="Root">
+        <!-- review? -->
+        <h3><code> Front-end</code></h3>
+        <p>
+          To make our code as clean as possible, we separated the files used on the front-end side of things into five:
+        <ul>
+            <li>assets</li>
+            <li>models</li>
+            <li>pages</li>
+            <li>scripts</li>
+            <li>styles</li>
+        </ul>
+        </p>
+        <p>
+            Each file in each folder serves to a specific type of functionality:
+            <ul>
+                <li>assets - This is where we keep all photos used in the project</li>
+                <li>models - This is where all classes that are used when mapping our resources from the backend find themselves</li>
+                <li>pages - This folder contains the HTML code for our statically generated elements in each page</li>
+                <li>scripts - This is where JavaScript files that handle either requests or dynamic generation of HTML elements are</li>
+                <li>styles - And finally, in styles is where all the magic that makes each page look awesome(at least by our tastes) is happening</li>
+            </ul>
+        </p>
+
+        <h3><code> Back-end </code></h3>
+        <p>
+            The back-end is much simpler to put into words, as it has only two folders and 1 file that are absolutely necessary:
+            <ul>
+                <li>db</li>
+                <li>models</li>
+                <li>index.js</li>
+            </ul>
+        </p>
+        <p>
+            As is with the front-end, each folder in the back-end is meant for one thing, and one thing only:
+            <ul>
+                <li>db - This is where the db.js file is found, which is responsible for every interaction that the server needs to have with the database</li>
+                <li>models - This folder contains all models that we use in order to map either responses from the database or request bodies</li>
+                <li>index.js - Here is the birthplace of our server, which handles requests sent by the client</li>
+            </ul>
+        </p>
+      </section>
+      <section id="article">
+        <!-- review? -->
+        <h3>Endpoints</h3>
+        <p>Our back-end side of things exposes a series of endpoints, meant for being of service to the Client:
+        </p>
+        <p><b>GET</b></p>
+        <ul>
+            <li>/Courses - returns all existig Courses</li>
+            <li>/Courses?courseId=id - returns the course that has the _id === id</li>
+            <li>/Courses?searchString="searchString" - returns the course for which either the author or the title bears some resemblance to the searchString</li>
+            <li>/Users?username="username" - returns the user which has the Username "username"</li>
+            <li>/Users?userRanking="username" - returns the ranking of the user with the Username "username" </li>
+            <li>/Users/Rankings - returns the top 10 users of our platform</li>
+        </ul>          
+        <p><b>POST</b></p>
+        <ul>
+            <li>/Courses - creates a new Course based on the request body</li>
+            <li>/Users - creates a new User based on the request body</li>
+            <li>/Users/login - logs a user in based on the request body</li>
+            <li>/Users/Update - updates the count of how many courses the user has completed</li>
+        </ul>
+        <p><b>Request bodies</b></p>
+        <ul>
+            <li>Course: { title: "Course title", author: "Course author", materials: ['mat1', 'mat2', 'mat3'], tasks: ['task1', 'task2', 'task3'] } </li>
+            <li>Users: { username: "Some Username", password: "Some Password", admin: false, coursesCompleted: 0 }</li>
+            <li>Users login:  { username: "Some Username", password: "Some Password" }</li>
+            <li>Users update course count: { username: "Some Username", coursesCompleted: 3 }</li>
+        </ul>
+      </section>
+  </body>
+</html>
