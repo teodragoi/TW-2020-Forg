@@ -14,12 +14,13 @@ h1 {
     text-align: center;
     justify-content: center;
     margin-top: 64px;
-    background-image: url('../assets/Cartoon\ Bark\ 1.jpg');
     border-radius: 25px;
     padding-bottom: 25px;
     text-size-adjust: 20px;
     opacity: 1;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
+    color: #5f2e73;
+    font-weight: bold;
 }
 
 .content {
@@ -33,15 +34,19 @@ h1 {
 .list-title {
     font-size: 30px;
     margin-bottom: 24px;
-    font-family: "Lucida Console", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     opacity: 1;
+    color: #5f2e73;
+    font-weight: bold;
 }
 
 .list-item {
     margin-bottom: 24px;
     margin-top: 24px;
-    font-family: "Lucida Console", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     opacity: 1;
+    color: #5f2e73;
+    font-weight: bold;
 }
 
 ul.task-list {
