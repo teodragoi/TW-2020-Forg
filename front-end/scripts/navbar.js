@@ -18,9 +18,12 @@ function addAdminNavbarElements() {
     }
 
     if (localStorage.getItem('username')) {
-        navContainer.insertAdjacentHTML('beforeend', `
-        <span class="navbar-element"> <a onclick="logout()">LOGOUT</a> </span>
+        const logoutContainer = document.querySelector('.logout');
+        if (!logoutContainer) {
+            navContainer.insertAdjacentHTML('beforeend', `
+        <span class="navbar-element logout"> <a onclick="logout()">LOGOUT</a> </span>
     `);
+        }
     }
 
 }
