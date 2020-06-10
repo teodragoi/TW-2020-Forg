@@ -1,7 +1,7 @@
 let courseDetails;
 let tasksChecked = 0;
 let completeButtonDisabled = false;
-const noOfTasks = 3;
+let noOfTasks = 0;
 const coursesUrl = 'http://127.0.0.1:8125/Courses';
 
 window.addEventListener('onload', initializeCourse());
@@ -31,6 +31,7 @@ function getCourseById(courseId) {
                 course.title,
                 course.author
             );
+            noOfTasks = course.tasks.length;
             generateMaterialElements();
             generateTaskElements();
         })
