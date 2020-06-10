@@ -9,7 +9,7 @@ body {
 .search-area {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
     height: 500px;
 }
@@ -17,16 +17,18 @@ body {
 .search-form {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    height: 400px;
     margin-left: 150px;
 }
 
 .search-form>label {
     font-size: 40px;
     font-weight: 700;
-    color: white;
+    color: #ddd70b;
+    ;
     text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
     margin-bottom: 16px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .search-form>input {
@@ -35,6 +37,7 @@ body {
     box-shadow: none;
     padding-left: 16px;
     font-size: 20px;
+    background-color: rgb(222, 184, 135);
 }
 
 .search-form>input::placeholder {

@@ -14,14 +14,14 @@
         <div class="navbar-elements-container">
             <span class="navbar-element"> <a href="./index.html">HOME</a> </span>
             <span class="navbar-element"> <a href="./rankings.html">RANKINGS</a> </span>
-            <span class="navbar-element" onclick="openProfileModal()">PROFILE</span>
+            <span class="navbar-element"> <a onclick="openProfileModal()">PROFILE</a> </span>
         </div>
     </nav>
 
     <div class="main-area">
         <div class="search-area">
             <form class="search-form" action="">
-                <label for="searchString">Bring the world home</label>
+                <label for="searchString">What ideas will you plant today?</label>
                 <input type="text" id="searchString" name="searchString" placeholder="What do you want to learn?">
             </form>
         </div>
@@ -35,6 +35,7 @@
     </div>
 
     <script src="../models/user.model.js"></script>
+    <script src="../scripts/navbar.js"></script>
     <script src="../scripts/user.js"></script>
     <script src="../models/course-list-item.model.js" alt="#" type="text/javascript"></script>
     <script src="../scripts/course-list.js" alt="#" type="text/javascript"></script>

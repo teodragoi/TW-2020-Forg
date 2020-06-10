@@ -15,6 +15,7 @@ function setUser() {
             console.log(userModel);
             loadProfileModal();
             getUserRanking();
+            addAdminNavbarElements();
         })
         .catch(err => {
             console.log(err);

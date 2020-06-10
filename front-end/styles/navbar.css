@@ -7,8 +7,21 @@ nav {
 }
 
 a {
+    color: #494949 !important;
+    text-transform: uppercase;
     text-decoration: none;
-    color: rgb(255, 250, 250);
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+}
+
+a:hover {
+    color: #ffffff !important;
+    background: rgb(222, 184, 135);
+    border-color: rgb(222, 184, 135) !important;
+    transition: all 0.4s ease 0s;
 }
 
 .navbar-elements-container {
@@ -17,8 +30,14 @@ a {
     width: 500px;
     font-size: 18px;
     color: rgb(255, 250, 250);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .navbar-element {
     cursor: pointer;
+}
+
+.tabs-container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ddd70b;
 }

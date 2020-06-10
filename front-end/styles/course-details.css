@@ -15,11 +15,11 @@ h1 {
     justify-content: center;
     margin-top: 64px;
     background-image: url('../assets/Cartoon\ Bark\ 1.jpg');
-    /* background-size: cover; */
     border-radius: 25px;
     padding-bottom: 25px;
     text-size-adjust: 20px;
     opacity: 1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .content {
