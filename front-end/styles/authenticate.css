@@ -1,5 +1,5 @@
 body {
-    height: 75vh;
+    height: 100vh;
 }
 
 .form-container {
@@ -17,4 +17,14 @@ body {
 
 .validation-message {
     color: red;
+}
+
+.background {
+    background-image: url('../assets/gettyimages-155914049-640x640.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
 }
