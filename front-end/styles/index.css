@@ -1,14 +1,2 @@
 @import './search-area.css';
 @import './courses-overview.css';
-
-.tabs-container{
-    display: flex;
-    border-bottom:  solid 0.02em #b3b3b3;
-    cursor: pointer;
-}
-
-.tab{
-    padding: 1em;
-    color: #b3b3b3;
-    font-weight: bold;
-}

@@ -41,8 +41,8 @@ function addMaterialField() {
         <label for="material${materialCount}">Material ${materialCount}</label>
         <div id="material${materialCount}" class="input-container">
             <input type="text" placeholder="Material${materialCount}" name="material${materialCount}">
-            <i id="icon-remove-material${materialCount}" class="far fa-minus-square add-remove-icon" onclick="removeField('input-material${materialCount}')"></i>
-            <i id="icon-add-material${materialCount}" class="far fa-plus-square add-remove-icon" onclick="addMaterialField()"></i>
+            <i id="icon-remove-material${materialCount}" class="far fa-minus-square fa-2x add-remove-icon" onclick="removeField('input-material${materialCount}')"></i>
+            <i id="icon-add-material${materialCount}" class="far fa-plus-square fa-2x add-remove-icon" onclick="addMaterialField()"></i>
         </div>
     </div>
     `);
@@ -64,8 +64,8 @@ function addTaskField() {
         <label for="task${taskCount}">Task ${taskCount}</label>
         <div id="task${taskCount}" class="input-container">
             <input type="text" placeholder="Task${taskCount}" name="task${taskCount}">
-            <i id="icon-remove-task${taskCount}" class="far fa-minus-square add-remove-icon" onclick="removeField('input-task${taskCount}')"></i>
-            <i id="icon-add-task${taskCount}" class="far fa-plus-square add-remove-icon" onclick="addTaskField()"></i>
+            <i id="icon-remove-task${taskCount}" class="far fa-minus-square fa-2x add-remove-icon" onclick="removeField('input-task${taskCount}')"></i>
+            <i id="icon-add-task${taskCount}" class="far fa-plus-square fa-2x add-remove-icon" onclick="addTaskField()"></i>
         </div>
     </div>
     `);
@@ -88,13 +88,13 @@ function removeField(elementId) {
         if (materialCount !== 1) {
             const lastInputContainer = document.getElementById(`material${materialCount}`);
             lastInputContainer.insertAdjacentHTML('beforeend', `
-            <i id="icon-remove-material${materialCount}" class="far fa-minus-square add-remove-icon" onclick="removeField('input-material${materialCount}')"></i>
-            <i id="icon-add-material${materialCount}" class="far fa-plus-square add-remove-icon" onclick="addMaterialField()"></i>
+            <i id="icon-remove-material${materialCount}" class="far fa-minus-square fa-2x add-remove-icon" onclick="removeField('input-material${materialCount}')"></i>
+            <i id="icon-add-material${materialCount}" class="far fa-plus-square fa-2x add-remove-icon" onclick="addMaterialField()"></i>
         `);
         } else {
             const lastInputContainer = document.getElementById(`material1`);
             lastInputContainer.insertAdjacentHTML('beforeend', `
-            <i id="icon-add-material1" class="far fa-plus-square add-remove-icon" onclick="addMaterialField()"></i>
+            <i id="icon-add-material1" class="far fa-plus-square fa-2x add-remove-icon" onclick="addMaterialField()"></i>
         `);
         }
     } else {
@@ -102,13 +102,13 @@ function removeField(elementId) {
         if (taskCount !== 1) {
             const lastInputContainer = document.getElementById(`task${taskCount}`);
             lastInputContainer.insertAdjacentHTML('beforeend', `
-            <i id="icon-remove-task${taskCount}" class="far fa-minus-square add-remove-icon" onclick="removeField('input-task${taskCount}')"></i>
-            <i id="icon-add-task${taskCount}" class="far fa-plus-square add-remove-icon" onclick="addTaskField()"></i>
+            <i id="icon-remove-task${taskCount}" class="far fa-minus-square fa-2x add-remove-icon" onclick="removeField('input-task${taskCount}')"></i>
+            <i id="icon-add-task${taskCount}" class="far fa-plus-square fa-2x add-remove-icon" onclick="addTaskField()"></i>
         `);
         } else {
             const lastInputContainer = document.getElementById(`task1`);
             lastInputContainer.insertAdjacentHTML('beforeend', `
-            <i id="icon-add-task1" class="far fa-plus-square add-remove-icon" onclick="addTaskField()"></i>
+            <i id="icon-add-task1" class="far fa-plus-square fa-2x add-remove-icon" onclick="addTaskField()"></i>
         `);
         }
     }
